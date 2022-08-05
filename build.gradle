@@ -16,6 +16,16 @@ allprojects {
 	group 'com.steatoda.nar'
 	version '1.0.0-SNAPSHOT'
 
-	sourceCompatibility = JavaVersion.VERSION_1_8
+	java {
+		toolchain {
+			languageVersion = JavaLanguageVersion.of(11)
+		}
+	}
+
+	idea {
+		module {
+			jdkName = 11
+		}
+	}
 
 }

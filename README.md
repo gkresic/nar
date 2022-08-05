@@ -22,4 +22,4 @@ Run demo with:
 ./gradlew :nar-demo:run --console=plain`
 ```
 
-Java 8 is required on path or in JAVA_HOME.
+Java 11 is required on path or in JAVA_HOME.
