@@ -19,7 +19,7 @@ See [Wiki](https://github.com/gkresic/nar/wiki) for details, especially
 Run demo with:
 
 ```
-./gradlew :nar-demo:run --console=plain`
+./gradlew :nar-demo:run --console=plain
 ```
 
 Java 11 is required on path or in JAVA_HOME.

@@ -4,8 +4,6 @@ plugins {
 
 archivesBaseName = 'nar-demo'
 
-mainClassName = 'com.steatoda.nar.demo.Demo'
-
 repositories {
 	mavenCentral()
 }
@@ -38,6 +36,11 @@ jar {
 
 artifacts {
 	archives jar
+}
+
+application {
+	mainModule = 'com.steatoda.nar.demo'
+	mainClass = 'com.steatoda.nar.demo.Demo'
 }
 
 run {

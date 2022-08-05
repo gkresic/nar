@@ -12,6 +12,7 @@ import java.util.Optional;
 import java.util.Set;
 
 import com.google.common.collect.Iterators;
+import com.steatoda.nar.internal.RecursiveStringMap;
 
 /**
  * <p>Defines complete object's field graph with exact subfields for each fields-enabled subobject.</p>

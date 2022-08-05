@@ -1,4 +1,6 @@
-package com.steatoda.nar;
+package com.steatoda.nar.internal;
+
+import com.steatoda.nar.NarGraph;
 
 import java.text.ParseException;
 import java.util.LinkedHashMap;
