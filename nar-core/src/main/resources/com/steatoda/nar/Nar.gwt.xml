@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.9.0//EN" "http://www.gwtproject.org/doctype/2.9.0/gwt-module.dtd">
+
+<module>
+
+	<source path="service/async/crud">
+		<include name="NarCollectionCRUDAsyncService.java"/>
+		<include name="NarCRUDAsyncService.java"/>
+		<include name="NarInstanceCRUDAsyncService.java"/>
+	</source>
+
+	<source path="service/async">
+		<include name="NarAsyncService.java"/>
+		<include name="NarBatcher.java"/>
+		<include name="NarDelegatingServiceHandler.java"/>
+		<include name="NarRequest.java"/>
+		<include name="NarServiceHandler.java"/>
+		<include name="NarServiceHandlerConvertor.java"/>
+	</source>
+
+	<source path="service/crud">
+		<include name="CRUDException.java"/>
+		<include name="CRUDOperation.java"/>
+		<include name="NarCRUDService.java"/>
+		<include name="NarDelegatingCRUDService.java"/>
+	</source>
+
+	<source path="service">
+		<include name="NarService.java"/>
+	</source>
+	
+	<source path="">
+		<include name="EntityUnavailableException.java"/>
+		<include name="FieldUnavailableException.java"/>
+		<include name="NarEditor.java"/>
+		<include name="NarEntity.java"/>
+		<include name="NarEntityBase.java"/>
+		<include name="NarField.java"/>
+		<include name="NarGraph.java"/>
+		<include name="NarObject.java"/>
+		<include name="NarObjectBase.java"/>
+		<include name="RecursiveStringMap.java"/>
+		<include name="UnknownFieldException.java"/>
+	</source>
+	
+</module>

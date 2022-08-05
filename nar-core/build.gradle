@@ -1,0 +1,48 @@
+plugins {
+	id 'java-library'
+	id 'maven-publish'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+
+	implementation 'com.google.guava:guava:31.1-jre'
+
+	testImplementation 'junit:junit:4.13.2'
+	testImplementation 'org.slf4j:slf4j-api:1.7.36'
+	testImplementation 'ch.qos.logback:logback-core:1.2.11'
+	testImplementation 'ch.qos.logback:logback-classic:1.2.11'
+	testImplementation 'org.apache.commons:commons-collections4:4.4'
+	testImplementation 'com.fasterxml.jackson.core:jackson-annotations:2.13.3'
+	testImplementation project(":nar-demo")
+
+}
+
+java {
+	withJavadocJar()
+	withSourcesJar()
+}
+
+jar {
+	manifest {
+		attributes (
+			'Implementation-Title': project.name,
+			'Implementation-Version': project.version
+		)
+	}
+}
+
+artifacts {
+	archives jar
+}
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
+		}
+	}
+}

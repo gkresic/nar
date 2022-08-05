@@ -1,0 +1,49 @@
+plugins {
+	id 'java-library'
+	id 'maven-publish'
+}
+
+archivesBaseName = 'nar-jackson'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+
+	api 'com.fasterxml.jackson.core:jackson-annotations:2.13.3'
+
+	implementation 'com.fasterxml.jackson.core:jackson-core:2.13.3'
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.3'
+	implementation project(":nar-core")
+
+	testImplementation 'junit:junit:4.13.2'
+
+}
+
+java {
+	withJavadocJar()
+	withSourcesJar()
+}
+
+jar {
+	manifest {
+		attributes (
+			'Implementation-Title': archivesBaseName,
+			'Implementation-Version': project.version
+		)
+	}
+}
+
+artifacts {
+	archives jar
+}
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			artifactId = archivesBaseName
+			from components.java
+		}
+	}
+}

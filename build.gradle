@@ -1,0 +1,21 @@
+plugins {
+	id 'idea'
+	id 'java'
+	id 'checkstyle'
+	id 'com.github.ben-manes.versions' version '0.39.0'			// fetch latest dependency versions
+	id 'se.patrikerdes.use-latest-versions' version '0.2.17'	// updates dependencies to latest versions (depends on 'com.github.ben-manes.versions')
+}
+
+allprojects {
+
+	apply plugin: 'idea'
+	apply plugin: 'java'
+	apply plugin: 'com.github.ben-manes.versions'
+	apply plugin: 'se.patrikerdes.use-latest-versions'
+
+	group 'com.steatoda.nar'
+	version '1.0.0-SNAPSHOT'
+
+	sourceCompatibility = JavaVersion.VERSION_1_8
+
+}

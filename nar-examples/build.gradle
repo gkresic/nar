@@ -1,0 +1,16 @@
+plugins {
+    id 'java'
+}
+
+archivesBaseName = 'nar-demo'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+	implementation project(":nar-core")
+	implementation project(":nar-demo")
+
+}

@@ -1,0 +1,48 @@
+plugins {
+	id 'application'
+}
+
+archivesBaseName = 'nar-demo'
+
+mainClassName = 'com.steatoda.nar.demo.Demo'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+
+	implementation 'org.slf4j:slf4j-api:1.7.36'
+	implementation 'ch.qos.logback:logback-core:1.2.11'
+	implementation 'ch.qos.logback:logback-classic:1.2.11'
+	implementation 'com.fasterxml.jackson.core:jackson-annotations:2.13.3'
+	implementation 'com.fasterxml.jackson.core:jackson-core:2.13.3'
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.3'
+	implementation 'com.google.guava:guava:31.1-jre'
+	implementation 'org.apache.commons:commons-text:1.9'
+	implementation project(":nar-core")
+	implementation project(":nar-jackson")
+
+	implementation 'org.jetbrains:annotations:23.0.0'
+
+}
+
+jar {
+	manifest {
+		attributes (
+			'Implementation-Title':  archivesBaseName,
+			'Implementation-Version': project.version
+		)
+	}
+}
+
+artifacts {
+	archives jar
+}
+
+run {
+	standardInput = System.in
+}
+
+distTar.enabled = false
+distZip.enabled = false
