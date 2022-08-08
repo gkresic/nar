@@ -9,9 +9,9 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup Java 11
         uses: actions/setup-java@v3
-          with:
-            distribution: temurin
-            java-version: 11
+        with:
+          distribution: temurin
+          java-version: 11
       - name: Execute Gradle build
         with:
           arguments: build -x test
