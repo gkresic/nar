@@ -1,0 +1,20 @@
+name: Build Nar and run test
+on: push
+jobs:
+  build:
+    name: Checkout, build and run test
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+      - name: Setup Java 11
+        uses: actions/setup-java@v3
+          with:
+            distribution: temurin
+            java-version: 11
+      - name: Execute Gradle build
+        with:
+          arguments: build -x test
+      - name: Run tests
+        with:
+          arguments: test
