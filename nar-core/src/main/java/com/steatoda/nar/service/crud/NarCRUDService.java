@@ -2,6 +2,7 @@ package com.steatoda.nar.service.crud;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.steatoda.nar.NarField;
@@ -93,6 +94,20 @@ public interface NarCRUDService<I, C extends NarEntity<I, C, F>, F extends Enum<
 	Stream<C> queryAllFieldValues(S selector, Set<F> fields);
 
 	/**
+	 * <p>Invokes {@link #queryAllFieldValues}, collects whole stream into a {@link List} and closes the stream.</p>
+	 *
+	 * @param selector selector to filter entities
+	 * @param fields fields on which to determine distinctiveness
+	 *
+	 * @return list of all combinations of required fields
+	 */
+	default List<C> listAllFieldValues(S selector, Set<F> fields) {
+		try (Stream<C> stream = queryAllFieldValues(selector, fields)) {
+			return stream.collect(Collectors.toList());
+		}
+	}
+
+	/**
 	 * <p>Performs operation in one transactional batch and pulls {@code graph} for each created and modified entity
 	 * (deleted entites are left as-is).</p>
 	 *
@@ -149,5 +164,19 @@ public interface NarCRUDService<I, C extends NarEntity<I, C, F>, F extends Enum<
 	 * @return stream of entities selected
 	 */
 	Stream<C> query(S selector, NarGraph<F> graph);
+
+	/**
+	 * <p>Invokes {@link #query}, collects whole stream into a {@link List} and closes the stream.</p>
+	 *
+	 * @param selector selector to filter entities
+	 * @param graph fields graph to resolve
+	 *
+	 * @return list of entities selected
+	 */
+	default List<C> list(S selector, NarGraph<F> graph) {
+		try (Stream<C> stream = query(selector, graph)) {
+			return stream.collect(Collectors.toList());
+		}
+	}
 
 }
