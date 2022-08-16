@@ -3,8 +3,6 @@ plugins {
 	id 'maven-publish'
 }
 
-archivesBaseName = 'nar-jackson'
-
 repositories {
 	mavenCentral()
 }
@@ -29,7 +27,7 @@ java {
 jar {
 	manifest {
 		attributes (
-			'Implementation-Title': archivesBaseName,
+			'Implementation-Title': project.name,
 			'Implementation-Version': project.version
 		)
 	}
@@ -42,7 +40,6 @@ artifacts {
 publishing {
 	publications {
 		mavenJava(MavenPublication) {
-			artifactId = archivesBaseName
 			from components.java
 		}
 	}

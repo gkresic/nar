@@ -3,6 +3,7 @@ plugins {
 	id 'maven-publish'
 }
 
+// jOOQ requires Java 17, so we have to do the same
 java {
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(17)
