@@ -1,8 +1,3 @@
-plugins {
-	id 'java-library'
-	id 'maven-publish'
-}
-
 // jOOQ requires Java 17, so we have to do the same
 java {
 	toolchain {
@@ -16,10 +11,6 @@ idea {
 	}
 }
 
-repositories {
-	mavenCentral()
-}
-
 dependencies {
 
 	implementation 'org.jooq:jooq:3.17.2'
@@ -27,30 +18,4 @@ dependencies {
 
 	implementation project(":nar-core")
 
-}
-
-java {
-	withJavadocJar()
-	withSourcesJar()
-}
-
-jar {
-	manifest {
-		attributes (
-			'Implementation-Title': project.name,
-			'Implementation-Version': project.version
-		)
-	}
-}
-
-artifacts {
-	archives jar
-}
-
-publishing {
-	publications {
-		mavenJava(MavenPublication) {
-			from components.java
-		}
-	}
 }

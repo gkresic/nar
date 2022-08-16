@@ -2,12 +2,6 @@ plugins {
 	id 'application'
 }
 
-archivesBaseName = 'nar-demo'
-
-repositories {
-	mavenCentral()
-}
-
 dependencies {
 
 	implementation 'org.slf4j:slf4j-api:1.7.36'
@@ -23,19 +17,6 @@ dependencies {
 
 	implementation 'org.jetbrains:annotations:23.0.0'
 
-}
-
-jar {
-	manifest {
-		attributes (
-			'Implementation-Title':  archivesBaseName,
-			'Implementation-Version': project.version
-		)
-	}
-}
-
-artifacts {
-	archives jar
 }
 
 application {

@@ -2,19 +2,23 @@ plugins {
 	id 'idea'
 	id 'java'
 	id 'checkstyle'
-	id 'com.github.ben-manes.versions' version '0.39.0'			// fetch latest dependency versions
-	id 'se.patrikerdes.use-latest-versions' version '0.2.17'	// updates dependencies to latest versions (depends on 'com.github.ben-manes.versions')
+	id 'java-library'
+	id 'maven-publish'
+	id 'signing'
 }
 
 allprojects {
 
 	apply plugin: 'idea'
 	apply plugin: 'java'
-	apply plugin: 'com.github.ben-manes.versions'
-	apply plugin: 'se.patrikerdes.use-latest-versions'
+	apply plugin: 'checkstyle'
 
 	group 'com.steatoda.nar'
 	version '1.0.0-SNAPSHOT'
+
+	repositories {
+		mavenCentral()
+	}
 
 	java {
 		toolchain {
@@ -26,6 +30,52 @@ allprojects {
 		module {
 			jdkName = '11'
 		}
+	}
+
+}
+
+subprojects { subproject ->
+
+	if (false
+		|| subproject.name == 'nar-core'
+		|| subproject.name == 'nar-jackson'
+		|| subproject.name == 'nar-jooq'
+	) {
+
+		apply plugin: 'java-library'
+		apply plugin: 'maven-publish'
+		apply plugin: 'signing'
+
+		java {
+			withJavadocJar()
+			withSourcesJar()
+		}
+
+		jar {
+			manifest {
+				attributes (
+					'Implementation-Title': subproject.name,
+					'Implementation-Version': subproject.version
+				)
+			}
+		}
+
+		artifacts {
+			archives jar
+		}
+
+		publishing {
+			publications {
+				mavenJava(MavenPublication) {
+					from components.java
+				}
+			}
+		}
+
+		signing {
+			sign publishing.publications.mavenJava
+		}
+
 	}
 
 }
