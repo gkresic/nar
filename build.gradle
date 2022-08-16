@@ -5,6 +5,7 @@ plugins {
 	id 'java-library'
 	id 'maven-publish'
 	id 'signing'
+	id 'io.github.gradle-nexus.publish-plugin' version '1.1.0'
 }
 
 allprojects {
@@ -68,6 +69,24 @@ subprojects { subproject ->
 			publications {
 				mavenJava(MavenPublication) {
 					from components.java
+					pom {
+						url = 'https://github.com/gkresic/nar'
+						licenses {
+							license {
+								name = 'The MIT License'
+								url = 'https://github.com/gkresic/nar/blob/master/LICENSE'
+							}
+						}
+						developers {
+							developer {
+								id = 'gkresic'
+								name = 'Gordan Krešić'
+							}
+						}
+						scm {
+							url = 'https://github.com/gkresic/nar'
+						}
+					}
 				}
 			}
 		}
@@ -78,4 +97,13 @@ subprojects { subproject ->
 
 	}
 
+}
+
+nexusPublishing {
+	repositories {
+		sonatype {
+			nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+			snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+		}
+	}
 }

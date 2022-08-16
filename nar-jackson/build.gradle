@@ -9,3 +9,14 @@ dependencies {
 	testImplementation 'junit:junit:4.13.2'
 
 }
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			pom {
+				name = 'Nar Jackson'
+				description = 'Helpers for (de)serializing Nar objects to/from JSON using Jackson'
+			}
+		}
+	}
+}

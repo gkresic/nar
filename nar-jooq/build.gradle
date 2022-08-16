@@ -19,3 +19,14 @@ dependencies {
 	implementation project(":nar-core")
 
 }
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			pom {
+				name = 'Nar jOOQ'
+				description = 'Nar service implementations using jOOQ'
+			}
+		}
+	}
+}

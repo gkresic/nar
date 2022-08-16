@@ -11,3 +11,14 @@ dependencies {
 	testImplementation project(":nar-demo")
 
 }
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			pom {
+				name = 'Nar'
+				description = 'Library for working with partially initialized objects'
+			}
+		}
+	}
+}
