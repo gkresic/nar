@@ -61,17 +61,17 @@ public class NarDelegatingCRUDService<I, C extends NarEntity<I, C, F>, F extends
 	}
 
 	@Override
-	public void batch(List<? extends CRUDOperation<C>> operations, NarGraph<F> graph) {
+	public void batch(List<? extends NarCRUDOperation<C>> operations, NarGraph<F> graph) {
 		delegate.batch(operations, graph);
 	}
 
 	@Override
-	public void batch(Stream<? extends CRUDOperation<C>> operations) {
+	public void batch(Stream<? extends NarCRUDOperation<C>> operations) {
 		delegate.batch(operations);
 	}
 
 	@Override
-	public void perform(CRUDOperation<C> operation, NarGraph<F> graph) {
+	public void perform(NarCRUDOperation<C> operation, NarGraph<F> graph) {
 		delegate.perform(operation, graph);
 	}
 

@@ -9,77 +9,77 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * <p>Builder for batched {@link CRUDOperation}s</p>
+ * <p>Builder for batched {@link NarCRUDOperation}s</p>
  *
  * @param <C> class implementing {@link NarEntity}
  */
 public class NarCRUDBatchBuilder<C extends NarEntity<?, ?, ?>> {
 
 	/**
-	 * <p>Factory for building instances of {@link CRUDOperation}s.</p>
+	 * <p>Factory for building instances of {@link NarCRUDOperation}s.</p>
 	 *
 	 * @param <C> class implementing {@link NarEntity}
 	 */
 	@FunctionalInterface
 	public interface OperationFactory<C extends NarEntity<?, ?, ?>> {
-		CRUDOperation<C> get(CRUDOperation.Type type, C entity);
+		NarCRUDOperation<C> get(NarCRUDOperation.Type type, C entity);
 	}
 
 	/**
-	 * <p>Constructs {@link NarCRUDBatchBuilder} that builds operations of type {@link CRUDOperationBase}.</p>
+	 * <p>Constructs {@link NarCRUDBatchBuilder} that builds operations of type {@link NarCRUDOperationBase}.</p>
 	 */
 	public NarCRUDBatchBuilder() {
-		this(CRUDOperationBase::new);
+		this(NarCRUDOperationBase::new);
 	}
 
 	/**
 	 * <p>Constructs {@link NarCRUDBatchBuilder} that builds operations using provided factory.</p>
 	 *
-	 * @param operationFactory factory for building new {@link CRUDOperation}s
+	 * @param operationFactory factory for building new {@link NarCRUDOperation}s
 	 */
 	public NarCRUDBatchBuilder(OperationFactory<C> operationFactory) {
 		this.operationFactory = operationFactory;
 	}
 
 	/**
-	 * <p>Adds new {@link CRUDOperation} that should be performed in a batch.</p>
+	 * <p>Adds new {@link NarCRUDOperation} that should be performed in a batch.</p>
 	 *
 	 * @param operation operation to add
 	 *
 	 * @return {@code this}
 	 */
-	public NarCRUDBatchBuilder<C> add(CRUDOperation<C> operation) { this.operations.add(operation); return this; }
+	public NarCRUDBatchBuilder<C> add(NarCRUDOperation<C> operation) { this.operations.add(operation); return this; }
 
 	/**
-	 * <p>Adds new {@link CRUDOperation}s that should be performed in a batch.</p>
+	 * <p>Adds new {@link NarCRUDOperation}s that should be performed in a batch.</p>
 	 *
 	 * @param operations operations to add
 	 *
 	 * @return {@code this}
 	 */
 	@SafeVarargs
-	public final NarCRUDBatchBuilder<C> add(CRUDOperation<C>... operations) { add(Arrays.asList(operations)); return this; }
+	public final NarCRUDBatchBuilder<C> add(NarCRUDOperation<C>... operations) { add(Arrays.asList(operations)); return this; }
 
 	/**
-	 * <p>Adds new {@link CRUDOperation}s that should be performed in a batch.</p>
+	 * <p>Adds new {@link NarCRUDOperation}s that should be performed in a batch.</p>
 	 *
 	 * @param operations operations to add
 	 *
 	 * @return {@code this}
 	 */
-	public final NarCRUDBatchBuilder<C> add(Collection<CRUDOperation<C>> operations) { this.operations.addAll(operations); return this; }
+	public final NarCRUDBatchBuilder<C> add(Collection<NarCRUDOperation<C>> operations) { this.operations.addAll(operations); return this; }
 
 	/**
-	 * <p>Adds new {@link CRUDOperation} for creating new entity.</p>
+	 * <p>Adds new {@link NarCRUDOperation} for creating new entity.</p>
 	 *
 	 * @param entity entity to create
 	 *
 	 * @return {@code this}
 	 */
-	public NarCRUDBatchBuilder<C> addCreate(C entity) { add(operationFactory.get(CRUDOperation.Type.Create, entity)); return this; }
+	public NarCRUDBatchBuilder<C> addCreate(C entity) { add(operationFactory.get(NarCRUDOperation.Type.Create, entity)); return this; }
 
 	/**
-	 * <p>Adds new {@link CRUDOperation}s for creating new entities.</p>
+	 * <p>Adds new {@link NarCRUDOperation}s for creating new entities.</p>
 	 *
 	 * @param entities entities to create
 	 *
@@ -89,7 +89,7 @@ public class NarCRUDBatchBuilder<C extends NarEntity<?, ?, ?>> {
 	public final NarCRUDBatchBuilder<C> addCreate(C... entities) { Arrays.asList(entities).forEach(this::addCreate); return this; }
 
 	/**
-	 * <p>Adds new {@link CRUDOperation}s for creating new entities.</p>
+	 * <p>Adds new {@link NarCRUDOperation}s for creating new entities.</p>
 	 *
 	 * @param entities entities to create
 	 *
@@ -98,16 +98,16 @@ public class NarCRUDBatchBuilder<C extends NarEntity<?, ?, ?>> {
 	public final NarCRUDBatchBuilder<C> addCreate(Collection<C> entities) { entities.forEach(this::addCreate); return this; }
 
 	/**
-	 * <p>Adds new {@link CRUDOperation} for modifying existing entity.</p>
+	 * <p>Adds new {@link NarCRUDOperation} for modifying existing entity.</p>
 	 *
 	 * @param entity entity to modify
 	 *
 	 * @return {@code this}
 	 */
-	public NarCRUDBatchBuilder<C> addModify(C entity) { add(operationFactory.get(CRUDOperation.Type.Modify, entity)); return this; }
+	public NarCRUDBatchBuilder<C> addModify(C entity) { add(operationFactory.get(NarCRUDOperation.Type.Modify, entity)); return this; }
 
 	/**
-	 * <p>Adds new {@link CRUDOperation}s for modifying existing entities.</p>
+	 * <p>Adds new {@link NarCRUDOperation}s for modifying existing entities.</p>
 	 *
 	 * @param entities entities to modify
 	 *
@@ -117,7 +117,7 @@ public class NarCRUDBatchBuilder<C extends NarEntity<?, ?, ?>> {
 	public final NarCRUDBatchBuilder<C> addModify(C... entities) { Arrays.asList(entities).forEach(this::addModify); return this; }
 
 	/**
-	 * <p>Adds new {@link CRUDOperation}s for modifying existing entities.</p>
+	 * <p>Adds new {@link NarCRUDOperation}s for modifying existing entities.</p>
 	 *
 	 * @param entities entities to modify
 	 *
@@ -126,16 +126,16 @@ public class NarCRUDBatchBuilder<C extends NarEntity<?, ?, ?>> {
 	public final NarCRUDBatchBuilder<C> addModify(Collection<C> entities) { entities.forEach(this::addModify); return this; }
 
 	/**
-	 * <p>Adds new {@link CRUDOperation} for deleting existing entity.</p>
+	 * <p>Adds new {@link NarCRUDOperation} for deleting existing entity.</p>
 	 *
 	 * @param entity entity to delete
 	 *
 	 * @return {@code this}
 	 */
-	public NarCRUDBatchBuilder<C> addDelete(C entity) { add(operationFactory.get(CRUDOperation.Type.Delete, entity)); return this; }
+	public NarCRUDBatchBuilder<C> addDelete(C entity) { add(operationFactory.get(NarCRUDOperation.Type.Delete, entity)); return this; }
 
 	/**
-	 * <p>Adds new {@link CRUDOperation}s for deleting existing entities.</p>
+	 * <p>Adds new {@link NarCRUDOperation}s for deleting existing entities.</p>
 	 *
 	 * @param entities entities to delete
 	 *
@@ -145,7 +145,7 @@ public class NarCRUDBatchBuilder<C extends NarEntity<?, ?, ?>> {
 	public final NarCRUDBatchBuilder<C> addDelete(C... entities) { Arrays.asList(entities).forEach(this::addDelete); return this; }
 
 	/**
-	 * <p>Adds new {@link CRUDOperation}s for deleting existing entities.</p>
+	 * <p>Adds new {@link NarCRUDOperation}s for deleting existing entities.</p>
 	 *
 	 * @param entities entities to delete
 	 *
@@ -168,16 +168,16 @@ public class NarCRUDBatchBuilder<C extends NarEntity<?, ?, ?>> {
 	}
 
 	/**
-	 * <p>Constructs {@link List} of {@link CRUDOperation}s added to this builder.</p>
+	 * <p>Constructs {@link List} of {@link NarCRUDOperation}s added to this builder.</p>
 	 *
-	 * @return {@link List} of {@link CRUDOperation}s added to this builder
+	 * @return {@link List} of {@link NarCRUDOperation}s added to this builder
 	 */
-	public List<CRUDOperation<C>> build() {
+	public List<NarCRUDOperation<C>> build() {
 		return Collections.unmodifiableList(operations);
 	}
 
 	private final OperationFactory<C> operationFactory;
 
-	private final List<CRUDOperation<C>> operations = new ArrayList<>();
+	private final List<NarCRUDOperation<C>> operations = new ArrayList<>();
 
 }

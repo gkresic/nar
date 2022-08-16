@@ -7,7 +7,7 @@ import com.steatoda.nar.NarEntity;
  *
  * @param <C> class implementing {@link NarEntity}
  */
-public interface CRUDOperation<C extends NarEntity<?, ?, ?>> {
+public interface NarCRUDOperation<C extends NarEntity<?, ?, ?>> {
 
 	/** Type of operation */
 	enum Type {

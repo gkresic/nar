@@ -114,7 +114,7 @@ public interface NarCRUDService<I, C extends NarEntity<I, C, F>, F extends Enum<
 	 * @param operations operations to perform
 	 * @param graph graph to pull into each entity after create/modify
 	 */
-	default void batch(List<? extends CRUDOperation<C>> operations, NarGraph<F> graph) {
+	default void batch(List<? extends NarCRUDOperation<C>> operations, NarGraph<F> graph) {
 		operations.forEach(operation -> perform(operation, graph));
 	}
 
@@ -125,7 +125,7 @@ public interface NarCRUDService<I, C extends NarEntity<I, C, F>, F extends Enum<
 	 *
 	 * @param operations operations to perform
 	 */
-	default void batch(Stream<? extends CRUDOperation<C>> operations) {
+	default void batch(Stream<? extends NarCRUDOperation<C>> operations) {
 		NarGraph<F> graph = NarGraph.noneOf(instance().getFieldsClass());
 		operations.forEach(operation -> perform(operation, graph));
 	}
@@ -137,7 +137,7 @@ public interface NarCRUDService<I, C extends NarEntity<I, C, F>, F extends Enum<
 	 * @param operation operation to perform
 	 * @param graph graph to pull into each created or modified entity
 	 */
-	default void perform(CRUDOperation<C> operation, NarGraph<F> graph) {
+	default void perform(NarCRUDOperation<C> operation, NarGraph<F> graph) {
 		switch (operation.getType()) {
 			case Create: create(operation.getEntity(), graph); return;
 			case Modify: modify(operation.getEntity(), graph); return;
