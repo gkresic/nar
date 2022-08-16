@@ -24,7 +24,7 @@ allprojects {
 
 	idea {
 		module {
-			jdkName = 11
+			jdkName = '11'
 		}
 	}
 

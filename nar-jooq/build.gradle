@@ -12,7 +12,7 @@ java {
 
 idea {
 	module {
-		jdkName = 17
+		jdkName = '17'
 	}
 }
 
