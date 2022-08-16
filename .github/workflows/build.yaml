@@ -1,5 +1,7 @@
 name: Build Nar and run test
 on: push
+  branches:
+    - 'master'
 jobs:
   build:
     name: Checkout, build and run test
