@@ -15,7 +15,7 @@ allprojects {
 	apply plugin: 'checkstyle'
 
 	group 'com.steatoda.nar'
-	version '1.0.0-SNAPSHOT'
+	version '1.0.0'
 
 	repositories {
 		mavenCentral()

@@ -14,6 +14,24 @@ See [Wiki](https://github.com/gkresic/nar/wiki) for details, especially
 [Motivation](https://github.com/gkresic/nar/wiki/Motivation) and
 [Getting started](https://github.com/gkresic/nar/wiki/Getting_started).
 
+# Nar Core
+
+TODO description
+
+TODO Maven coordinates
+
+# Nar Jackson
+
+TODO description
+
+TODO Maven coordinates
+
+# Nar jOOQ
+
+TODO description
+
+TODO Maven coordinates
+
 # Demo
 
 Run demo with:
