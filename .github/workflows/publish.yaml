@@ -3,8 +3,6 @@ on:
   push:
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+'
-      - # TODO remove
-      - 'test-publish-**'
 jobs:
   build:
     name: Publish artefacts
@@ -41,6 +39,4 @@ jobs:
           ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.SONATYPE_USERNAME }}
           ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.SONATYPE_PASSWORD }}
         with:
-          # TODO replace
-          arguments: publishToSonatype
-#          arguments: publishToSonatype closeAndReleaseSonatypeStagingRepository
+          arguments: publishToSonatype closeAndReleaseSonatypeStagingRepository
