@@ -14,23 +14,44 @@ See [Wiki](https://github.com/gkresic/nar/wiki) for details, especially
 [Motivation](https://github.com/gkresic/nar/wiki/Motivation) and
 [Getting started](https://github.com/gkresic/nar/wiki/Getting_started).
 
-# Nar Core
+# Components
 
-TODO description
+## Nar Core
 
-TODO Maven coordinates
+Core Nar interfaces and some generic implementations.
 
-# Nar Jackson
+```
+<dependency>
+	<groupId>com.steatoda.nar</groupId>
+	<artifactId>nar-core</artifactId>
+	<version>1.0.0</version>
+</dependency>
+```
 
-TODO description
+## Nar Jackson
 
-TODO Maven coordinates
+Useful utils for (de)serializing Nar objects to/from JSON using [Jackson](https://github.com/FasterXML/jackson).
 
-# Nar jOOQ
+```
+<dependency>
+	<groupId>com.steatoda.nar</groupId>
+	<artifactId>nar-jackson</artifactId>
+	<version>1.0.0</version>
+</dependency>
+```
 
-TODO description
+## Nar jOOQ
 
-TODO Maven coordinates
+Base implementations of `NarService` and `NarCRUDService` backed by relational database using
+[jOOQ](https://www.jooq.org/).
+
+```
+<dependency>
+	<groupId>com.steatoda.nar</groupId>
+	<artifactId>nar-jooq</artifactId>
+	<version>1.0.0</version>
+</dependency>
+```
 
 # Demo
 
