@@ -92,6 +92,7 @@ subprojects { subproject ->
 		}
 
 		signing {
+			useInMemoryPgpKeys(findProperty("signingKey"), findProperty("signingPassword"))
 			sign publishing.publications.mavenJava
 		}
 
