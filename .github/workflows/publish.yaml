@@ -35,6 +35,9 @@ jobs:
       - name: Publish, close and release
         uses: gradle/gradle-build-action@v2
         env:
+          # publishToSonatype will trigger repeated signMavenJavaPublication, so include that credentials again...
+          ORG_GRADLE_PROJECT_signingKey: ${{ secrets.SIGNING_KEY }}
+          ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.SIGNING_PASSWORD }}
           ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.SONATYPE_USERNAME }}
           ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.SONATYPE_PASSWORD }}
         with:
