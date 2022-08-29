@@ -1,4 +1,9 @@
-# Nar
+# <p align="center">Nar</p>
+
+<p align="center">
+	<img alt="GitHub Actions status badge" src="https://github.com/gkresic/nar/actions/workflows/build.yaml/badge.svg"/>
+	<img alt="License badge" src="https://img.shields.io/github/license/gkresic/nar"/>
+</p>
 
 *Nar* (eng. pomegranate) because I never manage to consume these as a whole...
 
@@ -14,9 +19,9 @@ See [Wiki](https://github.com/gkresic/nar/wiki) for details, especially
 [Motivation](https://github.com/gkresic/nar/wiki/Motivation) and
 [Getting started](https://github.com/gkresic/nar/wiki/Getting_started).
 
-# Components
+## Components
 
-## Nar Core
+### Nar Core
 
 Core Nar interfaces and some generic implementations.
 
@@ -28,7 +33,7 @@ Core Nar interfaces and some generic implementations.
 </dependency>
 ```
 
-## Nar Jackson
+### Nar Jackson
 
 Useful utils for (de)serializing Nar objects to/from JSON using [Jackson](https://github.com/FasterXML/jackson).
 
@@ -40,7 +45,7 @@ Useful utils for (de)serializing Nar objects to/from JSON using [Jackson](https:
 </dependency>
 ```
 
-## Nar jOOQ
+### Nar jOOQ
 
 Base implementations of `NarService` and `NarCRUDService` backed by relational database using
 [jOOQ](https://www.jooq.org/).
@@ -53,7 +58,7 @@ Base implementations of `NarService` and `NarCRUDService` backed by relational d
 </dependency>
 ```
 
-# Demo
+## Demo
 
 Run demo with:
 
