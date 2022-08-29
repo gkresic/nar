@@ -1,4 +1,4 @@
-name: Build Nar and run test
+name: Build Nar and run tests
 on:
   push:
     branches:

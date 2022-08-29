@@ -23,7 +23,7 @@ import com.steatoda.nar.service.NarService;
 public interface NarObject<C extends NarObject<C, F>, F extends Enum<F> & NarField> {
 
 	/**
-	 * @return reference to this object (copy with no fields set, only ID (if object has it) and other attributes not managed by fields)
+	 * @return reference to this object (copy with no fields set, only ID (if object has it) and other properties not managed by fields)
 	 */
 	C ref();
 
