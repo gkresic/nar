@@ -29,7 +29,8 @@ nar_version: 1.0.0
 # Build settings
 markdown: GFM
 #theme: minima
-remote_theme: pages-themes/hacker@v0.2.0
+theme: hacker
+#remote_theme: pages-themes/hacker@v0.2.0
 plugins:
   - jekyll-feed
   - jekyll-remote-theme
