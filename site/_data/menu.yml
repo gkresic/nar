@@ -1,0 +1,11 @@
+- items:
+    - name: Home
+      link: /
+    - name: Motivation
+      link: /motivation/
+    - name: Basic concepts
+      link: /basic-concepts/
+    - name: Usage
+      link: /usage/
+    - name: Advanced
+      link: /advanced/

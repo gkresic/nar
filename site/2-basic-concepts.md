@@ -2,7 +2,11 @@
 layout: page
 title: Basic concepts
 permalink: /basic-concepts/
+hero_height: is-small
+menubar: menu
 ---
+
+# Basic concepts
 
 Primary goals of Nar is to provide following features:
 

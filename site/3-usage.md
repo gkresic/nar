@@ -2,7 +2,11 @@
 layout: page
 title: Usage
 permalink: /usage/
+hero_height: is-small
+menubar: menu
 ---
+
+# Usage
 
 Operations provided to your entities by Nar are intentionally low-level, which makes them suitable for wide array of use
 cases. You are free to explore how these Nar primitives could make you life easier and here I'll provide few best

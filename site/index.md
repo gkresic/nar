@@ -1,9 +1,12 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
-layout: home
+title: Nar
+subtitle: Java library for working with partially initialized objects
+layout: page
+hero_height: is-small
+menubar: menu
 ---
+
+# Nar
 
 *Nar* (eng. *pomegranate*), because I never manage to consume these as a whole...
 
@@ -14,6 +17,8 @@ in Nar and it can be easily ported to any language that supports concepts like e
 sets and interfaces with default methods (or any similar concept).
 Also, it's [GWT](http://www.gwtproject.org/) compatible, so it can be used
 on both backend and frontend.
+
+Sources are available on [GitHub](https://github.com/gkresic/nar).
 
 ## Components
 

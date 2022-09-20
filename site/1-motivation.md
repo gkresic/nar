@@ -2,7 +2,11 @@
 layout: page
 title: Motivation
 permalink: /motivation/
+hero_height: is-small
+menubar: menu
 ---
+
+# Motivation
 
 Working with complex object graphs in today's apps poses many challenges like bloat,
 cyclic references and access control. If your objects are consumed by third parties

@@ -2,9 +2,17 @@
 layout: page
 title: Advanced
 permalink: /advanced/
+hero_height: is-small
+menubar: menu
 ---
 
-# Batching requests
+# Advanced
+
+Nar is designed as a low-level building block, so it can provide lots of non-default usage scenarios.
+
+Here are some of them.
+
+## Batching requests
 
 Often on client side you'll need to retrieve or extend one exact entity from multiple places in your code.
 One common example of such scenario are multiple handlers for *create* or *modify* events which will receive instances
@@ -63,7 +71,7 @@ public class CityBatcher extends NarBatcher<String, City, City.Field> {
 Note that `NarBatcher`, by being an implementation of `NarAsyncService`, is suitable for any other operation where
 `NarAsyncService` is needed, like extending objects, for example.
 
-# Caching entities
+## Caching entities
 
 Caching is hard. Not as hard as [naming things](https://www.mediawiki.org/wiki/Naming_things), but still... hard.
 
@@ -82,7 +90,7 @@ Use precaching in cases when backing service have roughly the same performance w
 vs. fetching many properties, such is the case when reading row from relational database where major cost
 is *locating* row on disk, after which reading actual columns from that row is rather fast.
 
-# NarCRUDService
+## NarCRUDService
 
 As we already saw, `Nar(Async)Service` gives us the ability to retrieve and extend Nar entities,
 but what about creating, modifying or even deleting them? Of course, you are free to implement those ops
@@ -204,7 +212,7 @@ which provides base implementation backed by relational database using [jOOQ](ht
 
 `NarCachingCRUDService` is an implementation which leverages `NarEntityCache` to (partially) cache entities.
 
-# Complex IDs
+## Complex IDs
 
 Nar requires that entities have exactly one unique identifier. However, often our entities model some _relationship_
 or similar concept in which two or more values together compose a "complex" (or "composed") ID.
@@ -301,7 +309,7 @@ public class Budget extends NarEntityBase<Budget.Key, Budget, Budget.Field> {
 }
 ```
 
-# Entity vs. Object
+## Entity vs. Object
 
 Sometimes we are working with "data" objects that do not have unique identifier and hence could not be called
 an "entity". Obviously, those object could not support any operation that includes `Nar(Async)Service`
