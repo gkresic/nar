@@ -5,7 +5,7 @@
 layout: home
 ---
 
-*Nar* (eng. *pomegranate*) because I never manage to consume these as a whole...
+*Nar* (eng. *pomegranate*), because I never manage to consume these as a whole...
 
 Nar is a design pattern for working with partially initialized objects.
 Think GraphQL, but much smaller in scope and at the same time more versatile.
@@ -56,9 +56,13 @@ Base implementations of `NarService` and `NarCRUDService` backed by relational d
 
 ## Demo
 
-Run demo with:
+Clone from GitHub and run demo:
 
 ```
+git clone git@github.com:gkresic/nar.git
+
+cd nar
+
 ./gradlew :nar-demo:run --console=plain
 ```
 
