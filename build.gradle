@@ -70,7 +70,7 @@ subprojects { subproject ->
 				mavenJava(MavenPublication) {
 					from components.java
 					pom {
-						url = 'https://github.com/gkresic/nar'
+						url = 'https://nar.steatoda.com/'
 						licenses {
 							license {
 								name = 'The MIT License'
