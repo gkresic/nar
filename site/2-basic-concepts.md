@@ -386,7 +386,8 @@ Two things deserves explanation here:
 
 To resolve any `NarEntity` first thing we'll need is a model which will define which exact fields (and, optionally,
 their sub-fields) we want resolved. For that purpose, we'll use `NarGraph` which is immutable set with optional method
-to retrieve sub-graphs (also of type `NarGraph`) for fields which describe nested `NarEntity`ies. So, "hierarchical set".
+to retrieve sub-graphs (also of type `NarGraph`) for fields which describe nested `NarEntity`s.
+So, "type-safe hierarchical set".
 
 In its most simple use case, `NarGraph` can be constructed much like regular `EnumSet`:
 

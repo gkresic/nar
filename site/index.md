@@ -36,7 +36,7 @@ Core Nar interfaces and some generic implementations.
 
 ### Nar Jackson
 
-Useful utils for (de)serializing Nar objects to/from JSON using [Jackson](https://github.com/FasterXML/jackson).
+Useful utilities for (de)serializing Nar objects to/from JSON using [Jackson](https://github.com/FasterXML/jackson).
 
 ```
 <dependency>

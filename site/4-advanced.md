@@ -23,7 +23,7 @@ to be the same set of properties, multiple times.
 
 Meet `NarBatcher` which is a special implementation of `NarAsyncService` and which knows how to use backing
 `NarAsyncService` delegate to "batch" multiple retrievals of same entity into only one call to `NarAsyncService.get`
-using union of all fields requested by different calling client. This way multiple network round trips
+using union of all fields requested by different calling clients. This way multiple network round trips
 and entity retrievals from backing store will be replaced with only one, saving time, resources and network bandwidth.
 
 One important thing to consider is when to invoke `NarBatcher.run` which will actually execute all batched invocations.

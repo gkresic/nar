@@ -20,8 +20,9 @@ could save you a lot of headaches, both during development, but also in producti
 since reading something that wasn't previously initialized is rarely a good idea.
 
 Actually, Nar goes even further, offering you to use `fieldGet` method in your getters which will throw
-`FieldUnavailableException` if field corresponding to that particular property was not present (check *Basic concepts*
-on how to use it). On the other hand, guarding your every getter invocation with `try-catch` would be very troublesome.
+`FieldUnavailableException` if field corresponding to that particular property was not present
+(check [Basic concepts](/basic-concepts/) on how to use it).
+On the other hand, guarding your every getter invocation with `try-catch` would be very troublesome.
 
 Of course, Nar provides solution to this. Actually, two solutions, and you are free to leverage either one interchangeably,
 depending on what serve you better at any given moment:
@@ -51,9 +52,9 @@ are initialized (using, for example, `hasFields` method).
 
 ## Extending entities
 
-One of the main features of Nar is ability to "extent" entities in a way to read from backing store one or more new
-properties and then patch them onto existing entity. Usage is already demonstrated in *Basic concepts* and is pretty
-simple:
+One of the main features of Nar is ability to "extend" entities in a way to read from backing store one or more new
+properties and then patch them onto existing entity. Usage is already demonstrated in [Basic concepts](/basic-concepts/)
+and is pretty simple:
 
 ```Java
 CityService cityService = ...;
@@ -71,7 +72,7 @@ city.extend(NarGraph.of(City.Field.name, City.Field.streets), cityService);
 Note that extending an entity with fields that are already initialized is a no-op, which makes this operation suitable
 for invocation in every code segment that works on given entity. 
 
-This pattern allows us to gradually "build" our objects, filling them with more and more properties as they are being
+This pattern allows us to gradually "build" our entities, filling them with more and more properties as they are being
 passed from one function to another, each of them extending an entity with properties it needs.
 
 Of course, each round-trip to backing store to fetch new properties has some inherent cost we have to factor in.
@@ -122,7 +123,7 @@ paths, each requiring different properties, then gradual extending is the only w
 
 In a scenario where you can expect that multiple components will try to extend same instance simultaneously
 (for example, as a reaction to some form of a 'modify' event) you can further optimize execution by grouping those
-multiple extends into only one using `NarBatcher` (see how to use it in *Advanced usage*).
+multiple extends into only one using `NarBatcher` (see how to use it in [Advanced](/advanced/)).
 
 Please do note that the entity may change between the time it was originally retrieved from the backing store
 (using `get`) and the moment you `extend` it leading for data inconsistencies (in an extreme case entity may
@@ -132,10 +133,10 @@ or one event loop cycle on frontend) or include some domain-specific logic for h
 
 ## Filtering entities
 
-Opposite process of extending entities is their reduction to not contain any unneeded fields.
+Opposite process of extending entities is their reduction to not contain any unwanted fields.
 One of the cases in which this is useful (if not mandatory) is at the end of th client-facing entrypoints into your code
 (like API endpoints). Those entrypoints usually accept from the client graph that should be returned,
-fetch entity with (at least) that graph initialized, but then usually process it in some way
+then fetch that entity with (at least) that graph initialized, but then usually process it in some way
 (most obviously to do some access control checks) before returning it back to client.
 As we have shown in the previous chapter, each of that processing step may have extended our entity
 with some additional fields it needed, but which were not requested by the client and should not be returned to him.
@@ -182,7 +183,7 @@ For example, you can use it to "whitelist" properties that are allowed to be per
 
 ## Jackson support
 
-(De)Serializing Nar entities may require some fine-tuning of your (de)serialization mechanism.
+(De)serializing Nar entities may require some fine-tuning of your (de)serialization mechanism.
 Here you can find what is needed to configure [Jackson](https://github.com/FasterXML/jackson)
 for (de)serializing to/from JSON, but similar rules may apply to other libraries and formats.
 

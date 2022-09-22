@@ -10,7 +10,7 @@ menubar: menu
 
 Working with complex object graphs in today's apps poses many challenges like bloat,
 cyclic references and access control. If your objects are consumed by third parties
-over some public API, add versioning to that list, too.
+over a public API, add versioning to that list, too.
 
 As an example, consider this simple data model:
 
@@ -54,29 +54,29 @@ Boat:
 + crew : List<Person>
 ```
 
-Probably everyone's first impulse is to represent this model in a way so that every object used contains fully
-initialized subobjects (all of them): every `Marina` instance will contain fully initialized `manager` and fully
+Probably everyone's first impulse is to represent this model in a way so that every entity used contains fully
+initialized sub-entities (all of them): every `Marina` instance will contain fully initialized `manager` and fully
 initialized `berths` (note that `berths` represents an *array* so here we are talking about fully initialized
 _every member_ of that array). Every `manager` will, in turn, contain fully initialized `boat` just like every berth
-will have fully initialized `boat`. Boats will contain their sub objects etc.
+will have fully initialized `boat`. Boats will contain their sub-entities etc.
 
 So called "full graph".
 
-Working with full graphs is simple since everything your root object references is already initialized. However, sooner
+Working with full graphs is simple since everything your root entity references is already initialized. However, sooner
 or later (and it somehow always ends up to be "sooner"), some inevitable problems pop out.
 
 ### Problems
 
 #### Bloat
 
-Sometimes objects contain either large, calculated-on-demand or somehow else 'expensive' properties which may be needed
-only occasionally (in our demo case it would be the `depth` matrix in `Marina` object). If we read/calculate and send
+Sometimes entities contain either large, calculated-on-demand or somehow else 'expensive' properties which may be needed
+only occasionally (in our demo case it would be the `depth` matrix in `Marina` entity). If we read/calculate and send
 to clients such properties on *every* request, communication will be unnecessarily slow not to mention load on our
 backend.
 
 #### Cyclic references
 
-Object A as a member contains instance of object B which, in turn, contains instance of object A (graph theorists call
+Entity A as a member contains instance of entity B which, in turn, contains instance of entity A (graph theorists call
 this a [cycle](https://en.wikipedia.org/wiki/Cycle_(graph_theory))). Cycles may not be as simple as former example,
 but may arise in 3rd, 4th or even deeper references, making them increasingly difficult to spot and avoid.
 
@@ -86,12 +86,12 @@ Examples from our sample model:
 * **Marina** → `.manager` → **Person** → `.boat` → **Boat** → `.homeport` → **Marina**
 * **Marina** → `.berths` → **Berth** → `.boat` → **Boat** → `.homeport` → **Marina**
 
-Of course, holding such object graphs in memory is certainly possible, but (de)serializing them is always a challenge.
+Of course, holding such entity graphs in memory is certainly possible, but (de)serializing them is always a challenge.
 
 #### Access control
 
-Often our model contains objects with properties that may need certain access rights to read. For example (and this is
-a fairly common pattern) take `Person` objects that describe users in our app. Not every client working with `Boat`
+Often our model contains entities with properties that may need certain access rights to read. For example (and this is
+a fairly common pattern) take `Person` entity that describe users in our app. Not every client working with `Boat`
 should be able to read which permissions every crew member on that boat has (`boat.crew[].permissions`) nor is it
 GDPR-compliant to expose their email addresses (`boat.crew[].email`).
 
@@ -102,7 +102,7 @@ worse) any 3rd party's client for your public API, usually it's not simple - if 
 to every component in the ecosystem (for example, the long review process on app stores is something none of us can
 control).
 
-One common scenario is deprecating a property in one of your objects or replacing it with other, often of different
+One common scenario is deprecating a property in one of your entities or replacing it with other, often of different
 type. For example, let's say we need to upgrade our sample data model so that `Marina` can have more
 than one manager. Just dropping `manager` property is not feasible, since existing clients still expect it, so we'll
 probably decide to go with backward-compatible upgrade: keep `manager`, but introduce new property `managers` of type
@@ -128,10 +128,10 @@ things:
 
 1. Work with a full graph. Obviously, this phase didn't last for long :).
 
-2. Hold only IDs for every sub object and fetch their (fully resolved) instances on demand. And that's how I met set of
+2. Hold only IDs for every sub-entity and fetch their (fully resolved) instances on demand. And that's how I met set of
    problems commonly referred to as "waterfall effect".
 
-4. Specialized DTO (data transfer objects) for every specific request type which led me to copy/paste hell.
+4. Specialized DTO (data transfer entities) for every specific request type which led me to copy/paste hell.
 
 5. [RequestFactory](https://www.gwtproject.org/doc/latest/DevGuideRequestFactory.html) was an interesting new concept in
    the mid 00s popularized by [GWT](https://www.gwtproject.org/). Although its abandoned now, it heavily influenced Nar.
@@ -139,12 +139,12 @@ things:
 6. Finally, [GraphQL](https://graphql.org/) is most recent take on this problem, by far best implemented, documented and
    supported. However, it's not a silver bullet:
 
-    * Returned objects are for one-time usage and are not meant to be passed between functions since it's not possible
-      to track what has been initialized in them. In other words, only function that originally fetched an object knows
+    * Returned entities are for one-time use and are not meant to be passed between functions since it's not possible
+      to track what has been initialized in them. In other words, only function that originally fetched an entity knows
       if some empty property really holds no value, or it's empty because it wasn't fetched from the backend.
 
-    * Field declarations used for selecting specific properties in objects are strings which may lead to long-term
-      problems when upgrading an object graph, since it's difficult to isolate all the places where that changed
+    * Field declarations used for selecting specific properties in entities are strings which may lead to long-term
+      problems when upgrading an entity graph, since it's difficult to isolate all the places where that changed
       properties were being used (this problem is very similar in nature with problems caused by misspelled variable
       names in programming languages that don't mandate explicit variable declarations)
 
