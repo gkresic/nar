@@ -15,9 +15,7 @@ sets and interfaces with default methods (or any similar concept).
 Also, it's [GWT](http://www.gwtproject.org/) compatible, so it can be used
 on both backend and frontend.
 
-See [Wiki](https://github.com/gkresic/nar/wiki) for details, especially
-[Motivation](https://github.com/gkresic/nar/wiki/Motivation) and
-[Getting started](https://github.com/gkresic/nar/wiki/Getting_started).
+See [official website](https://nar.steatoda.com/) for more details.
 
 ## Components
 
