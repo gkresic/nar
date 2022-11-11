@@ -53,6 +53,7 @@ public class NarSerializerModifier extends BeanSerializerModifier {
 				order.put(propertyNameFields, Integer.MAX_VALUE);
 		}
 
+		@Override
 		public int compare(BeanPropertyWriter p1, BeanPropertyWriter p2) {
 			return Optional.ofNullable(order.get(p1.getName())).orElse(0).compareTo(Optional.ofNullable(order.get(p2.getName())).orElse(0));
 		}

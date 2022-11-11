@@ -85,6 +85,7 @@ public class Boat extends DemoEntity<String, Boat, Boat.Field> {
 		return ref(getId());
 	}
 
+	@Override
 	public String toString() {
 		StringBuilder strBuilder = new StringBuilder(Objects.toString(getId(), "<NEW>"));
 		if (hasFields(Field.name))

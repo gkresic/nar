@@ -17,12 +17,12 @@ public interface NarCRUDOperation<C extends NarEntity<?, ?, ?>> {
 	}
 
 	/**
-	 * @return type of operation
+	 * Returns type of operation.
 	 */
 	Type getType();
 
 	/**
-	 * @return entity on which operation is to be performed
+	 * Returns entity on which operation is to be performed.
 	 */
 	C getEntity();
 

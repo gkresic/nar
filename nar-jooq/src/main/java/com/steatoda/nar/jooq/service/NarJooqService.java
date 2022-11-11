@@ -38,6 +38,8 @@ public abstract class NarJooqService<I, C extends NarEntity<I, C, F>, F extends 
 	}
 
 	/**
+	 * Table holding entities.
+	 *
 	 * @return table holding entities
 	 */
 	public T getTable() { return table; }
@@ -136,6 +138,8 @@ public abstract class NarJooqService<I, C extends NarEntity<I, C, F>, F extends 
 	}
 
 	/**
+	 * {@link DSLContext} to use when building statements.
+	 *
 	 * @return {@link DSLContext} to use when building statements
 	 */
 	protected abstract DSLContext getDSLContext();

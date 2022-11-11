@@ -54,14 +54,13 @@ public class NarEntityCache<I, C extends NarEntity<I, C, F>, F extends Enum<F> &
 	 *
 	 * @param precachedFields fields to cache on initial fetch
 	 */
-	@SuppressWarnings("unchecked")
 	public NarEntityCache(Set<F> cacheableFields, Set<F> precachedFields) {
 
 		if (cacheableFields.isEmpty())
 			throw new IllegalArgumentException("cacheableFields is empty");
 
 		if (precachedFields == null)
-			precachedFields = EnumSet.noneOf((Class<F>) cacheableFields.iterator().next().getClass());
+			precachedFields = EnumSet.noneOf(cacheableFields.iterator().next().getDeclaringClass());
 		else if (!cacheableFields.containsAll(precachedFields))
 			throw new IllegalArgumentException("precachedFields not present in cacheableFields: " + Sets.difference(precachedFields, cacheableFields));
 

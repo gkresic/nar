@@ -154,14 +154,14 @@ public class NarCRUDBatchBuilder<C extends NarEntity<?, ?, ?>> {
 	public final NarCRUDBatchBuilder<C> addDelete(Collection<C> entities) { entities.forEach(this::addDelete); return this; }
 
 	/**
-	 * @return {@code true} if this builder holds no operations and {@code false} otherwise
+	 * Returns {@code true} if this builder holds no operations and {@code false} otherwise.
 	 */
 	public boolean isEmpty() {
 		return operations.isEmpty();
 	}
 
 	/**
-	 * @return number of operations in this batch
+	 * Returns number of operations in this batch.
 	 */
 	public int size() {
 		return operations.size();

@@ -23,12 +23,12 @@ import com.steatoda.nar.service.NarService;
 public interface NarObject<C extends NarObject<C, F>, F extends Enum<F> & NarField> {
 
 	/**
-	 * @return reference to this object (copy with no fields set, only ID (if object has it) and other properties not managed by fields)
+	 * Returns reference to this object (copy with no fields set, only ID (if object has it) and other properties not managed by fields).
 	 */
 	C ref();
 
 	/**
-	 * @return fields initialized within this object
+	 * Returns fields initialized within this object.
 	 */
 	Set<F> getFields();
 
@@ -101,8 +101,6 @@ public interface NarObject<C extends NarObject<C, F>, F extends Enum<F> & NarFie
 
 	/**
 	 * Returns enum class used to represent fields.
-	 *
-	 * @return enum class used to represent fields
 	 */
 	Class<F> getFieldsClass();
 

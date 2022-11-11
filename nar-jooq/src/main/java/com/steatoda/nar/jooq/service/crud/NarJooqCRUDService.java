@@ -70,16 +70,22 @@ public abstract class NarJooqCRUDService<I, C extends NarEntity<I, C, F>, F exte
 	}
 
 	/**
-	 * @return fields required to be present (but <u>may</u> be {@code null}) when creating entities
+	 * Fields required to be present (but <u>may</u> be {@code null}) when creating entities.
+	 *
+	 * @return fields required to be present (but <u>may</u> be {@code null}) when creating entities.
 	 */
 	public Set<F> getMandatoryFields() { return Collections.unmodifiableSet(mandatoryFields); }
 
 	/**
+	 * Fields that are allowed to be modified.
+	 *
 	 * @return fields that are allowed to be modified
 	 */
 	public Set<F> getModifiableFields() { return Collections.unmodifiableSet(modifiableFields); }
 
 	/**
+	 * Validator used to validate entities upon creating and modifying.
+	 *
 	 * @return validator used to validate entities upon creating and modifying
 	 */
 	public NarCRUDValidator<C, F> getValidator() { return validator; }
@@ -92,6 +98,8 @@ public abstract class NarJooqCRUDService<I, C extends NarEntity<I, C, F>, F exte
 	public void setValidator(NarCRUDValidator<C, F> validator) { this.validator = validator; }
 
 	/**
+	 * Fetch size used when reading records from database (see {@link ResultQuery#fetchSize(int)}).
+	 *
 	 * @return fetch size used when reading records from database (see {@link ResultQuery#fetchSize(int)})
 	 */
 	public int getQueryFetchSize() { return queryFetchSize; }

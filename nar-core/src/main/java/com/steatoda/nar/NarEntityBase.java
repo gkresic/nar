@@ -51,7 +51,7 @@ public abstract class NarEntityBase<I, C extends NarEntityBase<I, C, F>, F exten
 			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
+		if (!(obj instanceof NarEntityBase))
 			return false;
 		NarEntityBase<?, ?, ?> other = (NarEntityBase<?, ?, ?>) obj;
 		if (id == null)

@@ -62,10 +62,12 @@ public class Person extends JacksonNarEntity<String, Person, Person.Field> {
 		throw new FieldUnavailableException(field);
 	}
 
+	@Override
 	public Person ref() {
 		return ref(getId());
 	}
 
+	@Override
 	public String toString() {
 		StringBuilder strBuilder = new StringBuilder(getId());
 		if (getFields().contains(Field.name))

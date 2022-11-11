@@ -14,7 +14,7 @@ import com.steatoda.nar.NarEntity;
 public interface NarService<I, C extends NarEntity<I, C, F>, F extends Enum<F> & NarField> {
 
 	/**
-	 * @return new, uninitialized instance
+	 * Returns new, uninitialized instance.
 	 */
 	C instance();
 

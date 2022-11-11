@@ -19,12 +19,12 @@ public class UnknownFieldException extends ParseException {
 	}
 
 	/**
-	 * @return value that couldn't be parsed
+	 * Returns value that couldn't be parsed.
 	 */
 	public String getValue() { return value; }
 
 	/**
-	 * @return expected enum to which value couldn't be parsed
+	 * Returns expected enum to which value couldn't be parsed.
 	 */
 	public Class<? extends Enum<?>> getClazz() { return clazz; }
 

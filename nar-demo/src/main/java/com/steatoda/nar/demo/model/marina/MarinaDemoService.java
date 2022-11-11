@@ -88,12 +88,12 @@ public class MarinaDemoService implements MarinaService {
 		List<Consumer<Record>> modifiers = patch.getFields().stream()
 			.map(field -> {
 				switch (field) {
-					case name: return (Consumer<Record>) (r -> r.name = marina.getName());
-					case manager: return (Consumer<Record>) (r -> r.managerId = Optional.ofNullable(marina.getManager()).map(Person::getId).orElse(null));
-					case latitude: return (Consumer<Record>) (r -> r.latitute = marina.getLatitude());
-					case longitude: return (Consumer<Record>) (r -> r.longitude = marina.getLongitude());
-					case berths: return null;	// let's assume berths are not updatable
-					case depths: return null;	// let's assume depths are not updatable
+					case name:		return (Consumer<Record>) r -> r.name = marina.getName();
+					case manager:	return (Consumer<Record>) r -> r.managerId = Optional.ofNullable(marina.getManager()).map(Person::getId).orElse(null);
+					case latitude:	return (Consumer<Record>) r -> r.latitute = marina.getLatitude();
+					case longitude:	return (Consumer<Record>) r -> r.longitude = marina.getLongitude();
+					case berths:	return null;	// let's assume berths are not updatable
+					case depths:	return null;	// let's assume depths are not updatable
 				}
 				throw new UnsupportedOperationException("Unknown person field: " + field);
 			})

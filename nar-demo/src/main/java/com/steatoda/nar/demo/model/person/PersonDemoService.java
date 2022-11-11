@@ -64,10 +64,10 @@ public class PersonDemoService implements PersonService {
 		List<Consumer<Record>> modifiers = patch.getFields().stream()
 			.map(field -> {
 				switch (field) {
-					case name: return (Consumer<Record>) (r -> r.name = person.getName());
-					case email: return null;	// let's assume email is not updatable
-					case permissions: return (Consumer<Record>) r -> r.permissions = new HashSet<>(person.getPermissions());
-					case boat: return (Consumer<Record>) (r -> r.boatId = Optional.ofNullable(person.getBoat()).map(Boat::getId).orElse(null));
+					case name:			return (Consumer<Record>) r -> r.name = person.getName();
+					case email:			return null;	// let's assume email is not updatable
+					case permissions:	return (Consumer<Record>) r -> r.permissions = new HashSet<>(person.getPermissions());
+					case boat:			return (Consumer<Record>) r -> r.boatId = Optional.ofNullable(person.getBoat()).map(Boat::getId).orElse(null);
 				}
 				throw new UnsupportedOperationException("Unknown person field: " + field);
 			})

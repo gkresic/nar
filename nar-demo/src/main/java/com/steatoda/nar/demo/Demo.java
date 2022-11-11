@@ -3,6 +3,7 @@ package com.steatoda.nar.demo;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.text.NumberFormat;
 import java.util.EnumSet;
 import java.util.concurrent.CountDownLatch;
@@ -603,7 +604,7 @@ public class Demo {
 		
 		Log.info(message);
 
-		new BufferedReader(new InputStreamReader(System.in)).readLine();
+		new BufferedReader(new InputStreamReader(System.in, Charset.defaultCharset())).readLine();
 		
 	}
 

@@ -69,7 +69,7 @@ public class BerthDemoService implements BerthService {
 		List<Consumer<Record>> dummyModifiers = fields.stream()
 			.map(field -> {
 				switch (field) {
-					case boat: return (Consumer<Record>) (r -> r.boatId = Optional.ofNullable(berth.getBoat()).map(Boat::getId).orElse(null));
+					case boat:	return (Consumer<Record>) r -> r.boatId = Optional.ofNullable(berth.getBoat()).map(Boat::getId).orElse(null);
 				}
 				throw new UnsupportedOperationException("Unknown berth field: " + field);
 			})

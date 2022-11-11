@@ -26,7 +26,7 @@ public class NarPropertyFilter extends SimpleBeanPropertyFilter {
 	public static final String Name = "NarPropertyFilter";
 
 	/**
-	 * @return should this filter ignore {@link FieldUnavailableException} or not
+	 * Returns should this filter ignore {@link FieldUnavailableException} or not.
 	 */
 	public boolean getIgnoreFieldUnavailableException() {
 		return ignoreFieldUnavailableException;

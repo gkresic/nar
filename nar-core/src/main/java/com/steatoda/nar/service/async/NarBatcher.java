@@ -1,8 +1,8 @@
 package com.steatoda.nar.service.async;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
@@ -42,7 +42,7 @@ public class NarBatcher<I, C extends NarEntity<I, C, F>, F extends Enum<F> & Nar
 		}
 		
 		private final I id;
-		private final Queue<NarServiceHandler<C>> handlers = new LinkedList<>();
+		private final Queue<NarServiceHandler<C>> handlers = new ArrayDeque<>();
 		private NarGraph.Builder<F> graphBuilder = null;
 		private NarRequest request = null;
 		private boolean finished = false;

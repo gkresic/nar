@@ -77,11 +77,11 @@ public class BoatDemoService implements BoatService {
 		List<Consumer<Record>> dummyModifiers = fields.stream()
 			.map(field -> {
 				switch (field) {
-					case name: return (Consumer<Record>) (r -> r.name = boat.getName());
-					case type: return (Consumer<Record>) (r -> r.type = boat.getType());
-					case homeport: return (Consumer<Record>) (r -> r.homeportId = Optional.ofNullable(boat.getHomeport()).map(Marina::getId).orElse(null));
-					case skipper: return (Consumer<Record>) (r -> r.skipperId = Optional.ofNullable(boat.getSkipper()).map(Person::getId).orElse(null));
-					case crew: return (Consumer<Record>) r -> r.crewIds = boat.getCrew().stream().map(Person::getId).collect(Collectors.toList());
+					case name:		return (Consumer<Record>) r -> r.name = boat.getName();
+					case type:		return (Consumer<Record>) r -> r.type = boat.getType();
+					case homeport:	return (Consumer<Record>) r -> r.homeportId = Optional.ofNullable(boat.getHomeport()).map(Marina::getId).orElse(null);
+					case skipper:	return (Consumer<Record>) r -> r.skipperId = Optional.ofNullable(boat.getSkipper()).map(Person::getId).orElse(null);
+					case crew:		return (Consumer<Record>) r -> r.crewIds = boat.getCrew().stream().map(Person::getId).collect(Collectors.toList());
 				}
 				throw new UnsupportedOperationException("Unknown boat field: " + field);
 			})

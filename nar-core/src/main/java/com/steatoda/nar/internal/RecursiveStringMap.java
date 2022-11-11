@@ -49,7 +49,7 @@ public class RecursiveStringMap extends LinkedHashMap<RecursiveStringMap.Key, Re
 				if (end == value.length())
 					break;
 				c = value.charAt(end);
-				if (start == end && !isFieldIdentifierStart(c) || !isFieldIdentifierPart(c))
+				if ((start == end && !isFieldIdentifierStart(c)) || !isFieldIdentifierPart(c))
 					break;
 				++end;
 			}

@@ -101,10 +101,12 @@ public class Carrier extends NarEntityBase<String, Carrier, Carrier.Field> {
 		throw new FieldUnavailableException(field);
 	}
 
+	@Override
 	public Carrier ref() {
 		return ref(getId());
 	}
 
+	@Override
 	public String toString() {
 		StringBuilder strBuilder = new StringBuilder(getId());
 		if (getFields().contains(Field.name))

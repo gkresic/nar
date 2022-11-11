@@ -366,7 +366,7 @@ public class NarGraphTest {
 			Assert.assertEquals("UnknownFieldException reported wrong class", Boat.Field.class, e.getClazz());
 			Assert.assertEquals("UnknownFieldException reported wrong error offset", 15, e.getErrorOffset());
 		} catch (ParseException e) {
-			Assert.fail("Unknown ParseException throws");
+			throw new AssertionError("Unknown ParseException throws", e);
 		}
 	}
 

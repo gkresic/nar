@@ -1,3 +1,6 @@
+/**
+ * <p>Main Nar module, contains core components.</p>
+ */
 module com.steatoda.nar {
 
 	exports com.steatoda.nar;

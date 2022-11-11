@@ -9,12 +9,12 @@ package com.steatoda.nar;
 public interface NarEditor<F extends Enum<F> & NarField> {
 
 	/**
-	 * @return complete graph that this editor needs to operate properly
+	 * Returns complete graph that this editor needs to operate properly.
 	 */
 	NarGraph<F> getGraph();
 
 	/**
-	 * @return graph that editor modifies
+	 * Returns graph that editor modifies.
 	 */
 	NarGraph<F> getEditableGraph();
 	

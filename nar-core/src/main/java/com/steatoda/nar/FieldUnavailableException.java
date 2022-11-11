@@ -16,7 +16,7 @@ public class FieldUnavailableException extends IllegalStateException {
 	}
 
 	/**
-	 * @return unavailable fields
+	 * Returns unavailable fields that caused this exception.
 	 */
 	public Collection<? extends Enum<?>> getFields() { return fields; }
 

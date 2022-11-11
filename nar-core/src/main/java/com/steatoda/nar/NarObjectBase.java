@@ -30,7 +30,7 @@ public abstract class NarObjectBase<C extends NarObject<C, F>, F extends Enum<F>
 	@Override
 	public void setFields(Set<F> fields) { this.fields = fields; }
 
-	//@Override	// GWT complains
+	@Override
 	@SuppressWarnings("MethodDoesntCallSuperMethod")
 	public C clone() {
 		return cloneAll();

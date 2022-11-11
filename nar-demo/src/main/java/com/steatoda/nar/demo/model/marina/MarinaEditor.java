@@ -7,9 +7,8 @@ import org.apache.commons.text.TextStringBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.Instant;
+import java.time.format.DateTimeFormatter;
 
 /** (Dummy, no-op) editor for editing marina names */
 public class MarinaEditor implements NarEditor<Marina.Field> {
@@ -57,7 +56,7 @@ public class MarinaEditor implements NarEditor<Marina.Field> {
 			new TextStringBuilder(marina.getName())
 				.appendSeparator(' ')
 				.append("modified @ ")
-				.append(DateFormat.format(new Date()))
+				.append(DateFormatter.format(Instant.now()))
 				.toString()
 		);
 
@@ -92,7 +91,7 @@ public class MarinaEditor implements NarEditor<Marina.Field> {
 	}
 
 	private static final Logger Log = LoggerFactory.getLogger(MarinaEditor.class);
-	private static final DateFormat DateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+	private static final DateTimeFormatter DateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
 
 	private final MarinaService marinaService;
 	

@@ -307,7 +307,7 @@ public class NarGraph<F extends Enum<F> & NarField> extends AbstractSet<F> {
 	 * Clones this field graph with all subgraphs.
 	 * @return new {@link NarGraph} clone
 	 */
-	//@Override	// GWT complains
+	@Override
 	public NarGraph<F> clone() {
 		return new NarGraph<>(clazz, data.isEmpty() ? new EnumMap<>(clazz) : new EnumMap<>(data));
 	}
@@ -323,7 +323,7 @@ public class NarGraph<F extends Enum<F> & NarField> extends AbstractSet<F> {
 			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
+		if (!(obj instanceof NarGraph))
 			return false;
 		NarGraph<?> other = (NarGraph<?>) obj;
 		if (clazz != other.clazz)
@@ -371,7 +371,7 @@ public class NarGraph<F extends Enum<F> & NarField> extends AbstractSet<F> {
 	}
 
 	/**
-	 * @return {@link NarField} field class which describes first-level fields
+	 * Returns {@link NarField} field class which describes first-level fields.
 	 */
 	public Class<F> getDeclaringClass() {
 		return clazz;

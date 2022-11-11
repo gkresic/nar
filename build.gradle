@@ -6,6 +6,7 @@ plugins {
 	id 'maven-publish'
 	id 'signing'
 	id 'io.github.gradle-nexus.publish-plugin' version '1.1.0'
+	id 'net.ltgt.errorprone' version '3.0.1'
 }
 
 allprojects {
@@ -13,12 +14,17 @@ allprojects {
 	apply plugin: 'idea'
 	apply plugin: 'java'
 	apply plugin: 'checkstyle'
+	apply plugin: 'net.ltgt.errorprone'
 
 	group 'com.steatoda.nar'
 	version '1.0.0'
 
 	repositories {
 		mavenCentral()
+	}
+
+	dependencies {
+		errorprone 'com.google.errorprone:error_prone_core:2.16'
 	}
 
 	java {

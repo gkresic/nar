@@ -91,6 +91,7 @@ public class Marina extends DemoEntity<String, Marina, Marina.Field> {
 		return ref(getId());
 	}
 
+	@Override
 	public String toString() {
 		StringBuilder strBuilder = new StringBuilder(getId());
 		if (getFields().contains(Field.name))

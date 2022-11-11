@@ -19,7 +19,7 @@ import java.util.function.Function;
 public interface NarEntity<I, C extends NarEntity<I, C, F>, F extends Enum<F> & NarField> extends NarObject<C, F> {
 
 	/**
-	 * @return entity's unique ID
+	 * Returns entity's unique ID.
 	 */
 	I getId();
 
@@ -105,7 +105,7 @@ public interface NarEntity<I, C extends NarEntity<I, C, F>, F extends Enum<F> & 
 			return null;
 		}
 
-		return resolver.apply(missingGraph, new NarDelegatingServiceHandler<C>(handler) {
+		return resolver.apply(missingGraph, new NarDelegatingServiceHandler<>(handler) {
 			@Override
 			public void onSuccess(C extension) {
 				_extend(extension, graph);
